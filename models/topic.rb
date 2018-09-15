@@ -13,4 +13,8 @@ class Topic
   def self.all
     DB.query('SELECT * FROM topics').map { |hash| new(hash) }
   end
+
+  def save
+    DB.query("INSERT INTO topics (title, created_at, updated_at) VALUES ('#{@title}', NOW(), NOW())")
+  end
 end
