@@ -20,3 +20,9 @@ get '/topics/:id' do
   @posts = Post.of_topic(@topic.id)
   slim :show
 end
+
+post '/topics/:topic_id/posts' do
+  post = Post.new(name: params[:name], body: params[:body], topic_id: params[:topic_id])
+  post.save
+  redirect back
+end

@@ -15,4 +15,8 @@ class Post
   def self.of_topic(topic_id)
     DB.query("SELECT * FROM posts WHERE topic_id = #{topic_id}").map { |hash| new(hash) }
   end
+
+  def save
+    DB.query("INSERT INTO posts (name, body, topic_id, created_at, updated_at) VALUES ('#{@name}', '#{@body}', '#{@topic_id}', NOW(), NOW())")
+  end
 end

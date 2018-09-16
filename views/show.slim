@@ -11,3 +11,10 @@ html lang="ja"
       span= post.name
       span= post.created_at
       p= post.body
+
+    form action="/topics/#{@topic.id}/posts" method="post"
+      label
+        | 名前
+        input name="name" type="text"
+      textarea name="body"
+      input type="submit" value="投稿"
